@@ -6,8 +6,11 @@ const catInfo = document.querySelector('.cat-info');
 
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 
+select.style.visibility = 'hidden';
+
 fetchBreeds()
   .then(breeds => {
+    select.style.visibility = 'visible';
     loader.style.display = 'none';
 
     const cats = breeds
