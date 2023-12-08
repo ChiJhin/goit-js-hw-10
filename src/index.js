@@ -1,4 +1,6 @@
 import Notiflix from 'notiflix';
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
 
 const select = document.querySelector('.breed-select');
 const loader = document.querySelector('.loader');
@@ -11,6 +13,7 @@ select.style.visibility = 'hidden';
 fetchBreeds()
   .then(breeds => {
     select.style.visibility = 'visible';
+
     loader.style.display = 'none';
 
     const cats = breeds
@@ -22,6 +25,9 @@ fetchBreeds()
       .join('');
 
     select.insertAdjacentHTML('beforeend', cats);
+    new SlimSelect({
+      select: select,
+    });
   })
   .catch(error => {
     loader.style.display = 'none';
